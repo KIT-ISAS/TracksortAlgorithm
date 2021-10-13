@@ -1,0 +1,6 @@
+[submodule "Tracking/libDirectional"]
+	path = Tracking/libDirectional
+	url = ../../libDirectional/libDirectional.git
+[submodule "Tracking/AssignmentProblemSolvers/LAPJVMex/lapjv-c"]
+	path = Tracking/AssignmentProblemSolvers/LAPJVMex/lapjv-c
+	url = ../../yongyanghz/LAPJV-algorithm-c.git

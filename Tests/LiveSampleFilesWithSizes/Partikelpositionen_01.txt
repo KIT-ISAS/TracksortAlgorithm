@@ -1,0 +1,2 @@
+X-Position;Y-Position;X-Ausdehnung;Y-Ausdehnung;PColor;PID
+0.546774696552367E+00;0.795961379075056E-01;   0.0057218;   0.0048867;2;      7
