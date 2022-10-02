@@ -179,7 +179,8 @@ switch associationParam.associationScheme
         else % Using likelihoods is currently unsupported.
             assignmentProblem = -log(likelihoods);
         end
-        bestPerm(matlab.internal.graph.perfectMatching(assignmentProblem)) = 1:size(assignmentProblem, 1);
+        [~, bestPerm] = matlab.internal.graph.perfectMatching(assignmentProblem);
+        bestPerm = bestPerm';
     case 'JA'
         bestPerm = jointAssociation(likelihoods);
     otherwise
