@@ -1,6 +1,6 @@
 function terminate = waitForNextTimeStep(t, liveParam)
 % @author Florian Pfaff pfaff@kit.edu
-% @date 2016-2021
+% @date 2016-2022
 % When using live mode, pause if not yet ready
 currLockStatus = getLockStatus(liveParam.trackingLockFile);
 stillLocked = true;
@@ -19,11 +19,11 @@ while isa(currLockStatus, 'char') && stillLocked && ~isnan(str2double(currLockSt
     elseif (str2double(currLockStatus) - t * liveParam.timeStepMultiplier) < eps(10000)
         stillLocked = false;
     elseif ~isnan(str2double(currLockStatus)) % Do not error if 'end' is written in file
-        error('tracking:liveMode:lostSync', ...
+        error('LiveMode:lostSync', ...
             'Time is not synchronized. Expected time step %5.5G or %5.5G, read in step %s', ...
             (t - 1)*liveParam.timeStepMultiplier, t*liveParam.timeStepMultiplier, currLockStatus);
     elseif ~isa(currLockStatus, 'char')
-        warning('Lock file was empty, trying again.');
+        warning('LiveMode:EmptyLockFile','Lock file was empty, trying again.');
     end
 end
 % Give warning and end execution

@@ -248,7 +248,7 @@ classdef (SharedTestFixtures = { ...
                 fprintf(file, '0');
                 fclose(file);
                 batch('liveModeDummy(''LiveSampleFilesWithSizes'')');
-                testCase.applyFixture(SuppressedWarningsFixture('LiveMode:NoMeas'));
+                testCase.applyFixture(SuppressedWarningsFixture({'LiveMode:NoMeas', 'LiveMode:EmptyLockFile'}));
                 trackHistory = TrackSortAlgorithm([0.0, 0.18; 0.542, 0.642], predictFrom = 0.56, predictTo = 0.63, allParam = params);
                 testCase.verifyLength(trackHistory, 31);
                 testCase.verifyEqual(size([trackHistory.VisualClassifications], 1), 2);
@@ -270,7 +270,7 @@ classdef (SharedTestFixtures = { ...
                 fprintf(file, '0');
                 fclose(file);
                 batch('liveModeDummy(''LiveSampleFilesWithSizes'', 10)');
-                testCase.applyFixture(SuppressedWarningsFixture('LiveMode:NoMeas'));
+                testCase.applyFixture(SuppressedWarningsFixture({'LiveMode:NoMeas', 'LiveMode:EmptyLockFile'}));
                 trackHistory = TrackSortAlgorithm([0.0, 0.18; 0.542, 0.642], predictFrom = 0.56, predictTo = 0.63, allParam = params);
                 testCase.verifyLength(trackHistory, 31);
                 testCase.verifyEqual(size([trackHistory.VisualClassifications], 1), 2);
@@ -290,7 +290,7 @@ classdef (SharedTestFixtures = { ...
             file = fopen('Partikelpositionen_blockiert.txt', 'w');
             fprintf(file, '0');
             fclose(file);
-            testCase.applyFixture(SuppressedWarningsFixture('LiveMode:NoMeas'));
+            testCase.applyFixture(SuppressedWarningsFixture({'LiveMode:NoMeas', 'LiveMode:EmptyLockFile'}));
             testCase.verifyWarning(@()TrackSortAlgorithm([0.0, 0.18; 0.542, 0.642], predictFrom = 0.56, predictTo = 0.63, allParam = params), 'LiveMode:Timeout');
         end
     end
