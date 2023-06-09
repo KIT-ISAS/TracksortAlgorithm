@@ -28,6 +28,10 @@ jobs:
         with:
           repository: libDirectional/libDirectional
           path: libDirectional
+          
+      - name: List all files up to depth 4
+        run: |
+          find libDirectional -maxdepth 4
 
       - name: Set up MATLAB
         uses: matlab-actions/setup-matlab@v1
