@@ -21,14 +21,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: TracksortAlgorithm
-          submodules: false
+          submodules: true
 
-      - name: Check out libDirectional repository
-        uses: actions/checkout@v4
-        with:
-          repository: libDirectional/libDirectional
-          path: libDirectional
-          
       - name: List all files up to depth 4
         run: |
           find . -maxdepth 4
@@ -39,7 +33,7 @@ jobs:
       - name: Add lib directory to path and compile
         uses: matlab-actions/run-command@v2
         with:
-          command: "addpath(genpath('libDirectional')); compileAll;"
+          command: "addpath(genpath('Tracking/libDirectional')); compileAll;"
 
       - name: Run tests in TracksortAlgorithm/Tests
         uses: matlab-actions/run-tests@v2
