@@ -20,35 +20,28 @@ jobs:
       - name: Check out TracksortAlgorithm repository
         uses: actions/checkout@v4
         with:
-          path: TracksortAlgorithm
-          submodules: false
+          submodules: true
 
-      - name: Check out libDirectional repository
-        uses: actions/checkout@v4
-        with:
-          repository: libDirectional/libDirectional
-          path: libDirectional
-          
       - name: List all files up to depth 4
         run: |
           find . -maxdepth 4
 
       - name: Set up MATLAB
         uses: matlab-actions/setup-matlab@v2
+        with:
+          products: Image_Processing_Toolbox Statistics_and_Machine_Learning_Toolbox Symbolic_Math_Toolbox Parallel_Computing_Toolbox
 
       - name: Add lib directory to path and compile
         uses: matlab-actions/run-command@v2
         with:
-          command: "addpath(genpath('libDirectional')); compileAll;"
+          command: "addpath(genpath('Tracking/libDirectional')); compileAll;"
 
       - name: Run tests in TracksortAlgorithm/Tests
         uses: matlab-actions/run-tests@v2
         with:
           test-results-junit: test-results/results.xml
           code-coverage-cobertura: code-coverage/coverage.xml
-          source-folder: TracksortAlgorithm;libDirectional/lib
-          select-by-folder: TracksortAlgorithm/Tests
-          select-by-tag: "Batch"
+          select-by-folder: Tests
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
