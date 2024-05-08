@@ -5,7 +5,7 @@ classdef (SharedTestFixtures = { ...
         TrackSortAlgorithmTest < matlab.unittest.TestCase
     % @author Florian Pfaff
     % @date 2014-2021
-    methods (Test)
+    methods (Test, TestTags = {'Batch'})
         function generateDataset(testCase)
             testCase.verifyWarningFree(@()genStandardTestCases());
         end
@@ -191,6 +191,8 @@ classdef (SharedTestFixtures = { ...
             testCase.verifyWarning(@()TrackSortAlgorithm(2*[0, 1500; 0, 1050], predictFrom = 700, predictTo = 900, allParam = allParam, midpointMatrix = midpointMatrix), ...
                 'TrackSortAlgorithm:TracksShortForCurrentBorders');
         end
+    end
+    methods (Test, TestTags = {'LiveMode'})
         function testLiveModeScenarioWithoutUsingLiveMode(testCase)
             allMidpointsStruct = repmat(struct('midpoints', [], 'visualClassifications', []), 1, 10);
             maxSize = 0;
