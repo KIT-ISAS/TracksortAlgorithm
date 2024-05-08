@@ -20,7 +20,6 @@ jobs:
       - name: Check out TracksortAlgorithm repository
         uses: actions/checkout@v4
         with:
-          path: TracksortAlgorithm
           submodules: true
 
       - name: List all files up to depth 4
@@ -42,8 +41,7 @@ jobs:
         with:
           test-results-junit: test-results/results.xml
           code-coverage-cobertura: code-coverage/coverage.xml
-          source-folder: TracksortAlgorithm;libDirectional/lib
-          select-by-folder: TracksortAlgorithm/Tests
+          select-by-folder: Tests
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
