@@ -1,5 +1,5 @@
-[submodule "Tracking/libDirectional"]
-	path = Tracking/libDirectional
+[submodule "External/libDirectional"]
+	path = External/libDirectional
 	url = ../../libDirectional/libDirectional.git
 [submodule "Tracking/AssignmentProblemSolvers/LAPJVMex/lapjv-c"]
 	path = Tracking/AssignmentProblemSolvers/LAPJVMex/lapjv-c
